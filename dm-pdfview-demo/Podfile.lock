@@ -1,0 +1,14 @@
+PODS:
+  - DMPDFView (0.0.1)
+
+DEPENDENCIES:
+  - DMPDFView (from `..`)
+
+EXTERNAL SOURCES:
+  DMPDFView:
+    :path: ..
+
+SPEC CHECKSUMS:
+  DMPDFView: 1d06f0bd9c5113921eb0bc6d2b9fa0afba739923
+
+COCOAPODS: 0.32.1

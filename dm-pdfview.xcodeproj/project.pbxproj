@@ -1,0 +1,387 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		88BE20EB8F42925CDBF9F91C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BE2E67BC984B616874EC44 /* UIKit.framework */; };
+		88BE21E0E2E7C899DE90D90E /* DMPDFPageImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2A12BBA86745B9E2CD78 /* DMPDFPageImageView.m */; };
+		88BE23F94F416CD5297BA18A /* DMPDFPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE258FE5947C209069AF7B /* DMPDFPageView.m */; };
+		88BE24E23869CF735DE08269 /* DMPDFView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2007EB975D39A2D2DDAC /* DMPDFView.m */; };
+		88BE26C9ECE7E3E1186BE6C5 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BE27435A38EEE220A93581 /* XCTest.framework */; };
+		88BE26EF19347531C6D36903 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BE2405C948922804FDE073 /* Foundation.framework */; };
+		88BE2A47806F222E32A53114 /* DMPDFUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2FFE02632A83BE9043B3 /* DMPDFUtils.m */; };
+		88BE2A9F3097AD5D4238FFEA /* libdm-pdfview.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BE23CADA9EFC0B72750EF9 /* libdm-pdfview.a */; };
+		88BE2C4D1C232746094EFB0C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BE2405C948922804FDE073 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		88BE2F5E6AF2B2281711C32B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 88BE2431D847E82091C93EA1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 88BE2BDDB68000A127F87507;
+			remoteInfo = "dm-pdfview";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		88BE21F3A7A8E30A1A7CD7D8 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		88BE2007EB975D39A2D2DDAC /* DMPDFView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMPDFView.m; sourceTree = "<group>"; };
+		88BE23CADA9EFC0B72750EF9 /* libdm-pdfview.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libdm-pdfview.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		88BE23EF2CFFD5360E46FA69 /* DMPDFUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMPDFUtils.h; sourceTree = "<group>"; };
+		88BE2405C948922804FDE073 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		88BE2429166AAE0F850205C6 /* dm-pdfview-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "dm-pdfview-Prefix.pch"; sourceTree = "<group>"; };
+		88BE248A12D9D5E8BCD1B3DD /* DMPDFView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMPDFView.h; sourceTree = "<group>"; };
+		88BE258FE5947C209069AF7B /* DMPDFPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMPDFPageView.m; sourceTree = "<group>"; };
+		88BE27435A38EEE220A93581 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		88BE28BBF0C768D7454741A7 /* DMPDFPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMPDFPageView.h; sourceTree = "<group>"; };
+		88BE2A12BBA86745B9E2CD78 /* DMPDFPageImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMPDFPageImageView.m; sourceTree = "<group>"; };
+		88BE2A3EBC8F095E7EE58BA1 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		88BE2C197575C85EE9B22C2B /* DMPDFPageImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMPDFPageImageView.h; sourceTree = "<group>"; };
+		88BE2E525143292592596264 /* DMPDFView.podspec */ = {isa = PBXFileReference; lastKnownFileType = file.podspec; path = DMPDFView.podspec; sourceTree = "<group>"; };
+		88BE2E67BC984B616874EC44 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		88BE2FFE02632A83BE9043B3 /* DMPDFUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMPDFUtils.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		88BE283E4DAAA3A120567986 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88BE26EF19347531C6D36903 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88BE2BA7EBC9458793DF1157 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88BE26C9ECE7E3E1186BE6C5 /* XCTest.framework in Frameworks */,
+				88BE2C4D1C232746094EFB0C /* Foundation.framework in Frameworks */,
+				88BE20EB8F42925CDBF9F91C /* UIKit.framework in Frameworks */,
+				88BE2A9F3097AD5D4238FFEA /* libdm-pdfview.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		88BE24B7224DBFBDCA13F7F0 = {
+			isa = PBXGroup;
+			children = (
+				88BE2B07E852DE42F011BD12 /* Products */,
+				88BE2672FC0E944FA5605293 /* Frameworks */,
+				88BE2429166AAE0F850205C6 /* dm-pdfview-Prefix.pch */,
+				88BE2912A5578746811A1161 /* Classes */,
+				88BE2E525143292592596264 /* DMPDFView.podspec */,
+				88BE2A3EBC8F095E7EE58BA1 /* Podfile */,
+			);
+			sourceTree = "<group>";
+		};
+		88BE2672FC0E944FA5605293 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				88BE2405C948922804FDE073 /* Foundation.framework */,
+				88BE27435A38EEE220A93581 /* XCTest.framework */,
+				88BE2E67BC984B616874EC44 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		88BE2912A5578746811A1161 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				88BE2007EB975D39A2D2DDAC /* DMPDFView.m */,
+				88BE248A12D9D5E8BCD1B3DD /* DMPDFView.h */,
+				88BE2C197575C85EE9B22C2B /* DMPDFPageImageView.h */,
+				88BE2A12BBA86745B9E2CD78 /* DMPDFPageImageView.m */,
+				88BE28BBF0C768D7454741A7 /* DMPDFPageView.h */,
+				88BE258FE5947C209069AF7B /* DMPDFPageView.m */,
+				88BE23EF2CFFD5360E46FA69 /* DMPDFUtils.h */,
+				88BE2FFE02632A83BE9043B3 /* DMPDFUtils.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		88BE2B07E852DE42F011BD12 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				88BE23CADA9EFC0B72750EF9 /* libdm-pdfview.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		88BE2BDDB68000A127F87507 /* dm-pdfview */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 88BE2C978C4267300FD2FE4E /* Build configuration list for PBXNativeTarget "dm-pdfview" */;
+			buildPhases = (
+				88BE23788137B9A8132D5EA8 /* Sources */,
+				88BE283E4DAAA3A120567986 /* Frameworks */,
+				88BE21F3A7A8E30A1A7CD7D8 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "dm-pdfview";
+			productName = "dm-pdfview";
+			productReference = 88BE23CADA9EFC0B72750EF9 /* libdm-pdfview.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		88BE2E23A179BAB5C3DED1D5 /* dm-pdfviewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 88BE2561591E306242145913 /* Build configuration list for PBXNativeTarget "dm-pdfviewTests" */;
+			buildPhases = (
+				88BE234DF1B4FCA78595AFD3 /* Sources */,
+				88BE2BA7EBC9458793DF1157 /* Frameworks */,
+				88BE26A39745EF898D13CB0B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				88BE23EBB9F890AC8F670442 /* PBXTargetDependency */,
+			);
+			name = "dm-pdfviewTests";
+			productName = "dm-pdfviewTests";
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		88BE2431D847E82091C93EA1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "DevMode, Inc.";
+			};
+			buildConfigurationList = 88BE2AAB7AF49C89E36979BD /* Build configuration list for PBXProject "dm-pdfview" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 88BE24B7224DBFBDCA13F7F0;
+			productRefGroup = 88BE2B07E852DE42F011BD12 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				88BE2BDDB68000A127F87507 /* dm-pdfview */,
+				88BE2E23A179BAB5C3DED1D5 /* dm-pdfviewTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		88BE26A39745EF898D13CB0B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		88BE234DF1B4FCA78595AFD3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88BE23788137B9A8132D5EA8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88BE24E23869CF735DE08269 /* DMPDFView.m in Sources */,
+				88BE21E0E2E7C899DE90D90E /* DMPDFPageImageView.m in Sources */,
+				88BE23F94F416CD5297BA18A /* DMPDFPageView.m in Sources */,
+				88BE2A47806F222E32A53114 /* DMPDFUtils.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		88BE23EBB9F890AC8F670442 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 88BE2BDDB68000A127F87507 /* dm-pdfview */;
+			targetProxy = 88BE2F5E6AF2B2281711C32B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		88BE225EEAB468570EC494B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		88BE230EA60FC824559482F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "dm-pdfview/dm-pdfview-Prefix.pch";
+				INFOPLIST_FILE = "dm-pdfviewTests/dm-pdfviewTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+		88BE265145A0D8D000F4F9FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		88BE29A86755558D4CD93B28 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/dm_pdfview.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "dm-pdfview-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		88BE2C6B7DF6BF7B46CE13F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/dm_pdfview.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "dm-pdfview-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		88BE2D881BF14002046E26C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "dm-pdfview/dm-pdfview-Prefix.pch";
+				INFOPLIST_FILE = "dm-pdfviewTests/dm-pdfviewTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		88BE2561591E306242145913 /* Build configuration list for PBXNativeTarget "dm-pdfviewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88BE230EA60FC824559482F5 /* Release */,
+				88BE2D881BF14002046E26C9 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		88BE2AAB7AF49C89E36979BD /* Build configuration list for PBXProject "dm-pdfview" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88BE225EEAB468570EC494B5 /* Release */,
+				88BE265145A0D8D000F4F9FF /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		88BE2C978C4267300FD2FE4E /* Build configuration list for PBXNativeTarget "dm-pdfview" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88BE2C6B7DF6BF7B46CE13F4 /* Release */,
+				88BE29A86755558D4CD93B28 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 88BE2431D847E82091C93EA1 /* Project object */;
+}
