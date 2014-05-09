@@ -9,7 +9,6 @@
 #define DMPDFPageBuffer 2
 
 @interface DMPDFPageReference : NSObject
-@property (nonatomic) CGPDFPageRef page;
 @property (nonatomic) CGSize pageSize;
 @property (nonatomic, strong) DMPDFPageView* view;
 @end
@@ -19,6 +18,7 @@
 @property (nonatomic, strong) UIScrollView* scrollView;
 @property (nonatomic, strong) UIView* containerView;
 @property (nonatomic, strong) NSArray*pages;
+@property (nonatomic, strong) UILabel* pageLabel;
 @end
 
 @implementation DMPDFView {
@@ -52,6 +52,17 @@
     doubleMultiTap.numberOfTouchesRequired = 2;
     [self addGestureRecognizer:doubleMultiTap];
     [singleTap requireGestureRecognizerToFail:doubleTap];
+
+    self.pageLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, self.frame.size.height - 45, 80, 30)];
+    self.pageLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
+    self.pageLabel.textColor = UIColor.whiteColor;
+    self.pageLabel.backgroundColor = [UIColor colorWithRed:.5 green:.5 blue:.5 alpha:.7];
+    self.pageLabel.layer.cornerRadius = 10;
+    self.pageLabel.textAlignment = NSTextAlignmentCenter;
+    self.pageLabel.hidden = YES;
+    [self addSubview:self.pageLabel];
+
+    currentPage = 0;
 }
 
 - (void)load:(NSURL*)pdfUrl {
@@ -61,17 +72,20 @@
     for (int pageNumber = 1; pageNumber <= numPages; pageNumber++) {
         CGPDFPageRef page = CGPDFDocumentGetPage(document, (size_t) pageNumber);
         DMPDFPageReference* reference = [DMPDFPageReference new];
-        reference.page = page;
         reference.pageSize = [DMPDFUtils pageSize:page];
-        reference.view = [[DMPDFPageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) page:page];;
+        reference.view = [[DMPDFPageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) page:page];
         reference.view.layer.shadowOffset = CGSizeMake(3, 3);
         reference.view.layer.shadowColor = [UIColor blackColor].CGColor;
         reference.view.layer.shadowOpacity = .5;
+        reference.view.layer.borderColor = [UIColor colorWithRed:.8 green:.8 blue:.8 alpha:.8].CGColor;
+        reference.view.layer.borderWidth = 1;
         [self.containerView addSubview:reference.view];
         [pageViews addObject:reference];
     }
     self.pages = [NSArray arrayWithArray:pageViews];
     [self setNeedsLayout];
+    self.pageLabel.hidden = NO;
+    [self showPageLabel];
 }
 
 - (void)clearContent {
@@ -84,6 +98,7 @@
     if(self.document) {
         CGPDFDocumentRelease(self.document);
     }
+    self.pageLabel.hidden = YES;
 }
 
  - (void)renderPages {
@@ -122,14 +137,35 @@
 }
 
 - (void)setCurrentPage:(NSUInteger)page {
-    if(page != currentPage) {
-        currentPage = page;
-        [self renderPages];
+    currentPage = page;
+    [self renderPages];
+}
+
+- (void)showPageLabel {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    self.pageLabel.text = [NSString stringWithFormat:@"%d / %d", currentPage + 1, self.pages.count];
+    if(!self.pageLabel.alpha) {
+        [UIView beginAnimations:@"" context:nil];
+        [UIView setAnimationDuration:.5];
+        self.pageLabel.alpha = 1;
+        [UIView commitAnimations];
     }
+    [self performSelector:@selector(hidePageLabel) withObject:nil afterDelay:1.5];
+}
+
+- (void)hidePageLabel {
+    [UIView beginAnimations:@"" context:nil];
+    [UIView setAnimationDuration:.5];
+    self.pageLabel.alpha = 0;
+    [UIView commitAnimations];
 }
 
 - (NSUInteger)pageForContentOffset {
+    if(!self.pages.count) {
+        return 0;
+    }
     CGFloat offset = MAX(self.scrollView.contentOffset.y, DMPDFPageMargin);
+    offset += self.frame.size.height / 2;
     NSUInteger idx = 0;
     for(DMPDFPageReference* reference in self.pages) {
         if(reference.view.frame.origin.y - DMPDFPageMargin > offset) {
@@ -172,12 +208,12 @@
 
 #pragma mark - UIScrollViewDelegate
 
-- (void)scrollViewWillBeginDecelerating:(UIScrollView*)scrollView{
-    [self setCurrentPage:[self pageForContentOffset]];
-}
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView*)scrollView {
-    [self setCurrentPage:[self pageForContentOffset]];
+- (void)scrollViewDidScroll:(UIScrollView*)scrollView {
+    NSUInteger page = [self pageForContentOffset];
+    if(page != currentPage) {
+        [self setCurrentPage:page];
+    }
+    [self showPageLabel];
 }
 
 - (UIView*)viewForZoomingInScrollView:(UIScrollView*)scrollView {

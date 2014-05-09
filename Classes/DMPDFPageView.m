@@ -12,7 +12,7 @@
 - (instancetype)initWithFrame:(CGRect)frame page:(CGPDFPageRef)page {
     if(self = [super initWithFrame:frame]) {
         self.page = page;
-        self.backgroundColor = UIColor.clearColor;
+        self.backgroundColor = UIColor.whiteColor;
     }
     return self;
 }

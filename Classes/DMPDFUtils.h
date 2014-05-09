@@ -10,6 +10,4 @@
 
 + (UIImage*)renderImage:(CGPDFPageRef)page withSize:(CGSize)size;
 
-+ (BOOL)isRetina;
-
 @end

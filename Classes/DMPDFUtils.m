@@ -1,12 +1,8 @@
-#import <UIKit/UIKit.h>
 #import "DMPDFUtils.h"
 
 
 @implementation DMPDFUtils
 
-+ (BOOL)isRetina {
-    return [UIScreen.mainScreen respondsToSelector:@selector(scale)] && UIScreen.mainScreen.scale == 2.00;
-}
 
 + (CGSize)pageSize:(CGPDFPageRef)page {
     CGRect cropBox = CGPDFPageGetBoxRect(page, kCGPDFCropBox);
@@ -27,6 +23,8 @@
 }
 
 + (void)render:(CGPDFPageRef)page into:(CGContextRef)context withSize:(CGSize)constraint {
+    CGContextSetRGBFillColor(context, 1.0f, 1.0f, 1.0f, 1.0f);
+    CGContextFillRect(context, CGRectMake(0, 0, constraint.width, constraint.height));
     CGContextGetCTM(context);
     CGContextScaleCTM(context, 1, -1);
     CGContextTranslateCTM(context, 0, -constraint.height);
