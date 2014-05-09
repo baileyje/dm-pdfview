@@ -1,28 +1,33 @@
+#import <QuartzCore/QuartzCore.h>
 #import "DMPDFView.h"
 #import "DMPDFPageView.h"
-#import "DMPDFUtils.h"
+#import "DMPDFIndexView.h"
+#import "DMPDFDocument.h"
+#import "DMPDFPage.h"
 
 #define DMPDFPageMargin 10.0
 #define DMPDFZoomMin 1.0
 #define DMPDFZoomMax 5.0
 #define DMPDFZoomInc 1.0
-#define DMPDFPageBuffer 2
+#define DMPDFPageBuffer 5
 
 @interface DMPDFPageReference : NSObject
-@property (nonatomic) CGSize pageSize;
+@property (nonatomic, strong) DMPDFPage* page;
 @property (nonatomic, strong) DMPDFPageView* view;
 @end
 
-@interface DMPDFView() <UIScrollViewDelegate>
-@property (nonatomic) CGPDFDocumentRef document;
+@interface DMPDFView() <UIScrollViewDelegate, DMPDFIndexViewDelegate>
+@property (nonatomic, strong) DMPDFDocument* document;
 @property (nonatomic, strong) UIScrollView* scrollView;
 @property (nonatomic, strong) UIView* containerView;
 @property (nonatomic, strong) NSArray*pages;
 @property (nonatomic, strong) UILabel* pageLabel;
+@property (nonatomic, strong) DMPDFIndexView* indexView;
 @end
 
 @implementation DMPDFView {
-    NSInteger currentPage;
+    NSUInteger currentPage;
+    BOOL indexVisible;
 }
 
 - (void)initialize {
@@ -58,22 +63,21 @@
     self.pageLabel.textColor = UIColor.whiteColor;
     self.pageLabel.backgroundColor = [UIColor colorWithRed:.5 green:.5 blue:.5 alpha:.7];
     self.pageLabel.layer.cornerRadius = 10;
+    self.pageLabel.clipsToBounds = YES;
     self.pageLabel.textAlignment = NSTextAlignmentCenter;
     self.pageLabel.hidden = YES;
     [self addSubview:self.pageLabel];
-
+    self.showsIndex = YES;
     currentPage = 0;
 }
 
 - (void)load:(NSURL*)pdfUrl {
-    CGPDFDocumentRef document = CGPDFDocumentCreateWithURL((__bridge CFURLRef) pdfUrl);
-    int numPages = CGPDFDocumentGetNumberOfPages(document);
-    NSMutableArray* pageViews = [NSMutableArray arrayWithCapacity:numPages];
-    for (int pageNumber = 1; pageNumber <= numPages; pageNumber++) {
-        CGPDFPageRef page = CGPDFDocumentGetPage(document, (size_t) pageNumber);
+    self.document = [[DMPDFDocument alloc] initWithUrl:pdfUrl];
+    NSMutableArray* pageViews = [NSMutableArray arrayWithCapacity:self.document.numberOfPages];
+    for (DMPDFPage* page in self.document.pages) {
         DMPDFPageReference* reference = [DMPDFPageReference new];
-        reference.pageSize = [DMPDFUtils pageSize:page];
-        reference.view = [[DMPDFPageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) page:page];
+        reference.page = page;
+        reference.view = [[DMPDFPageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) andPage:page];
         reference.view.layer.shadowOffset = CGSizeMake(3, 3);
         reference.view.layer.shadowColor = [UIColor blackColor].CGColor;
         reference.view.layer.shadowOpacity = .5;
@@ -86,6 +90,14 @@
     [self setNeedsLayout];
     self.pageLabel.hidden = NO;
     [self showPageLabel];
+
+    if(self.showsIndex) {
+        self.indexView = [[DMPDFIndexView alloc] initWithFrame:CGRectMake(self.frame.size.width - 100, 0, 100, self.frame.size.height) andDocument:self.document.reference];
+        self.indexView.delegate = self;
+        [self addSubview:self.indexView];
+        [self.indexView highlight:currentPage];
+        indexVisible = YES;
+    }
 }
 
 - (void)clearContent {
@@ -95,16 +107,17 @@
     self.containerView.frame = CGRectZero;
     self.scrollView.contentSize = self.scrollView.bounds.size;
     self.pages = nil;
-    if(self.document) {
-        CGPDFDocumentRelease(self.document);
-    }
+    self.document = nil;
     self.pageLabel.hidden = YES;
+    if(self.indexView) {
+        [self.indexView removeFromSuperview];
+        self.indexView = nil;
+    }
 }
 
  - (void)renderPages {
-     int start = MAX(currentPage - DMPDFPageBuffer, 0);
-     int end = MIN(self.pages.count - 1, currentPage + DMPDFPageBuffer);
-     NSLog(@"Current: %d  Start: %d  End: %d", currentPage, start, end);
+     NSUInteger start = (NSUInteger) MAX((NSInteger)currentPage - DMPDFPageBuffer, 0);
+     NSUInteger end = MIN(self.pages.count - 1, currentPage + DMPDFPageBuffer);
      for (NSUInteger i = 0; i < self.pages.count; i++) {
          DMPDFPageReference* item = self.pages[i];
          if (i < start || i > end) {
@@ -116,7 +129,7 @@
  }
 
 - (void)tapped:(UITapGestureRecognizer*)recognizer {
-    NSLog(@"Single Tapped");
+    [self toggleIndex];
 }
 
 - (void)doubleTapped:(UITapGestureRecognizer*)recognizer {
@@ -138,12 +151,15 @@
 
 - (void)setCurrentPage:(NSUInteger)page {
     currentPage = page;
+    if(self.indexView) {
+        [self.indexView highlight:currentPage];
+    }
     [self renderPages];
 }
 
 - (void)showPageLabel {
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
-    self.pageLabel.text = [NSString stringWithFormat:@"%d / %d", currentPage + 1, self.pages.count];
+    self.pageLabel.text = [NSString stringWithFormat:@"%d / %d", (int)currentPage + 1, (int)self.pages.count];
     if(!self.pageLabel.alpha) {
         [UIView beginAnimations:@"" context:nil];
         [UIView setAnimationDuration:.5];
@@ -176,6 +192,57 @@
     return self.pages.count - 1;;
 }
 
+- (void)goto:(NSUInteger)page {
+    [self goto:page animated:YES];
+}
+
+- (void)goto:(NSUInteger)page animated:(BOOL)animated {
+    if(page != currentPage && page < self.pages.count) {
+        DMPDFPageReference* pageReference = self.pages[page];
+        if(pageReference) {
+            [self.scrollView setContentOffset:CGPointMake(0, pageReference.view.frame.origin.y) animated:animated];
+        }
+    }
+}
+
+- (void)toggleIndex {
+    if(indexVisible) {
+        [self hideIndex];
+    } else {
+        [self showIndex];
+    }
+}
+
+- (void)showIndex {
+    if(!self.showsIndex || indexVisible) return;
+    indexVisible = YES;
+    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionBeginFromCurrentState
+         animations:^{
+             CGRect indexFrame = self.indexView.frame;
+             self.indexView.frame = CGRectMake(self.frame.size.width - indexFrame.size.width, indexFrame.origin.y, indexFrame.size.width, indexFrame.size.height);
+         }
+         completion:^(BOOL finished) {
+         }];
+}
+
+- (void)hideIndex {
+    if(!indexVisible) return;
+    indexVisible = NO;
+    [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionBeginFromCurrentState
+                     animations:^{
+                         CGRect indexFrame = self.indexView.frame;
+                         self.indexView.frame = CGRectMake(self.frame.size.width, indexFrame.origin.y, indexFrame.size.width, indexFrame.size.height);
+                     }
+                     completion:^(BOOL finished) {
+                     }];
+}
+
+#pragma mark - DMPDFIndexViewDelegate
+
+- (void)indexPageSelected:(NSUInteger)page {
+    [self goto:page animated:NO];
+}
+
 #pragma mark - UIView
 
 - (instancetype)initWithFrame:(CGRect)frame  {
@@ -196,7 +263,7 @@
     [super layoutSubviews];
     CGFloat offset = DMPDFPageMargin;
     for(DMPDFPageReference* pageReference in self.pages) {
-        CGSize pageSize = pageReference.pageSize;
+        CGSize pageSize = pageReference.page.size;
         CGFloat scale = (self.frame.size.width - DMPDFPageMargin *2) / pageSize.width;
         pageReference.view.frame = CGRectMake(DMPDFPageMargin, offset, pageSize.width * scale, pageSize.height * scale);
         offset += pageReference.view.frame.size.height + DMPDFPageMargin;
@@ -218,14 +285,6 @@
 
 - (UIView*)viewForZoomingInScrollView:(UIScrollView*)scrollView {
     return self.containerView;
-}
-
-#pragma mark - NSObject
-
-- (void)dealloc {
-    if(self.document) {
-        CGPDFDocumentRelease(self.document);
-    }
 }
 
 @end

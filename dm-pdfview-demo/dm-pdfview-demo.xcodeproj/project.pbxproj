@@ -22,6 +22,7 @@
 		88BE2D7572A8B622B90CA63A /* test.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 88BE2616378CAAB697831EFF /* test.pdf */; };
 		88BE2E49AD47B52F268A56CE /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BE23326E6F485F7E4E077C /* XCTest.framework */; };
 		88BE2EB851C5EB9148BE4F24 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2D60D1E4796819B5C9CC /* main.m */; };
+		88BE2EFE318AF3F4E3CC90C7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BE2DCFD2404600EF332537 /* QuartzCore.framework */; };
 		88BE2F0D0BB287434C57DF1B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BE22CE4382C20DED90CB81 /* CoreGraphics.framework */; };
 		F199391BC2914CE4A7378507 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CB830612E0A4718A1848098 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -60,6 +61,7 @@
 		88BE2AFC123DAE9B52EBA502 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		88BE2C2A87110070C52520AA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		88BE2D60D1E4796819B5C9CC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		88BE2DCFD2404600EF332537 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				88BE2F0D0BB287434C57DF1B /* CoreGraphics.framework in Frameworks */,
 				88BE215E1461147478BE9459 /* UIKit.framework in Frameworks */,
 				F199391BC2914CE4A7378507 /* libPods.a in Frameworks */,
+				88BE2EFE318AF3F4E3CC90C7 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +144,7 @@
 				88BE228915FD35D8F4E744A0 /* UIKit.framework */,
 				88BE23326E6F485F7E4E077C /* XCTest.framework */,
 				6CB830612E0A4718A1848098 /* libPods.a */,
+				88BE2DCFD2404600EF332537 /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

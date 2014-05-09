@@ -1,4 +1,3 @@
-#import <UIKit/UIKit.h>
 #import "DMPDFPageImageView.h"
 #import "DMPDFUtils.h"
 

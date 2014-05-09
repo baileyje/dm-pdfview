@@ -1,15 +1,16 @@
 #import "DMPDFPageView.h"
 #import "DMPDFUtils.h"
+#import "DMPDFPage.h"
 
 @interface DMPDFPageView()
-@property (nonatomic) CGPDFPageRef page;
+@property (nonatomic, strong) DMPDFPage* page;
 @end
 
 @implementation DMPDFPageView {
     BOOL loaded;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame page:(CGPDFPageRef)page {
+- (instancetype)initWithFrame:(CGRect)frame andPage:(DMPDFPage*)page {
     if(self = [super initWithFrame:frame]) {
         self.page = page;
         self.backgroundColor = UIColor.whiteColor;
@@ -37,7 +38,7 @@
 }
 
 -(void)drawLayer:(CALayer*)layer inContext:(CGContextRef)context {
-    if(loaded) [DMPDFUtils render:self.page into:context withSize:self.bounds.size];
+    if(loaded) [DMPDFUtils render:self.page.reference into:context withSize:self.bounds.size];
 }
 
 @end
