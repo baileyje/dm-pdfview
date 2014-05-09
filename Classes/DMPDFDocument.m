@@ -1,11 +1,22 @@
 #import "DMPDFDocument.h"
 #import "DMPDFPage.h"
 
+@interface DMPDFDocument()
+
+@property (nonatomic, copy) NSURL* url;
+
+@property (nonatomic) CGPDFDocumentRef reference;
+
+@property (nonatomic) NSUInteger numberOfPages;
+
+@property (nonatomic, strong) NSArray* pages;
+@end
 
 @implementation DMPDFDocument
 
 - (instancetype)initWithUrl:(NSURL*)url {
     if(self = [super init]) {
+        self.url = url;
         self.reference = CGPDFDocumentCreateWithURL((__bridge CFURLRef) url);
         self.numberOfPages = CGPDFDocumentGetNumberOfPages(self.reference);
         NSMutableArray* pages = [NSMutableArray arrayWithCapacity:self.numberOfPages];
@@ -20,8 +31,10 @@
 #pragma mark - NSObject
 
 - (void)dealloc {
-    if(self.reference) {
+    NSLog(@"DEALLOC");
+    if(self.reference != NULL) {
         CGPDFDocumentRelease(self.reference);
+        self.reference = nil;
     }
 }
 

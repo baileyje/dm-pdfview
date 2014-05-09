@@ -18,4 +18,6 @@
 
 - (void)hideIndex;
 
+- (void)releaseReference;
+
 @end

@@ -1,14 +1,13 @@
 #import "DMPDFPageView.h"
-#import "DMPDFUtils.h"
 #import "DMPDFPage.h"
 
-@interface DMPDFPageView()
+@interface DMPDFPageView ()
 @property (nonatomic, strong) DMPDFPage* page;
+- (void)doLoad;
+- (void)doUnload;
 @end
 
-@implementation DMPDFPageView {
-    BOOL loaded;
-}
+@implementation DMPDFPageView
 
 - (instancetype)initWithFrame:(CGRect)frame andPage:(DMPDFPage*)page {
     if(self = [super initWithFrame:frame]) {
@@ -21,24 +20,23 @@
 - (void)load {
     if(!loaded) {
         loaded = YES;
-        [self setNeedsDisplay];
+        [self doLoad];
     }
 }
 
 - (void)unload {
     if(loaded) {
         loaded = NO;
-        [self setNeedsDisplay];
+        [self doUnload];
     }
 }
 
-#pragma mark - UIView
-
--(void)drawRect:(CGRect)rect {
+- (void)doLoad {
+    [self setNeedsDisplay];
 }
 
--(void)drawLayer:(CALayer*)layer inContext:(CGContextRef)context {
-    if(loaded) [DMPDFUtils render:self.page.reference into:context withSize:self.bounds.size];
+- (void)doUnload {
+    [self setNeedsDisplay];
 }
 
 @end

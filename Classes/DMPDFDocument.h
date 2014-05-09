@@ -3,12 +3,11 @@
 
 @interface DMPDFDocument : NSObject
 
-@property (nonatomic) CGPDFDocumentRef reference;
+@property (nonatomic, readonly) CGPDFDocumentRef reference;
 
-@property (nonatomic) NSUInteger numberOfPages;
+@property (nonatomic, readonly) NSUInteger numberOfPages;
 
-@property (nonatomic, strong) NSArray* pages;
-
+@property (nonatomic, readonly) NSArray* pages;
 
 - (instancetype)initWithUrl:(NSURL*)url;
 

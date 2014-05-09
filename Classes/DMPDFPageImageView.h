@@ -1,10 +1,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreGraphics/CoreGraphics.h>
+#import "DMPDFPageView.h"
 
-@interface DMPDFPageImageView : UIView
-
-@property (nonatomic) CGSize pageSize;
-
-- (instancetype)initWithFrame:(CGRect)frame page:(CGPDFPageRef)page;
+@interface DMPDFPageImageView : DMPDFPageView
 
 @end

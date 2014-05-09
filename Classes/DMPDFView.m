@@ -1,17 +1,18 @@
 #import <QuartzCore/QuartzCore.h>
 #import "DMPDFView.h"
-#import "DMPDFPageView.h"
+#import "DMPDFPageDirectView.h"
 #import "DMPDFIndexView.h"
 #import "DMPDFDocument.h"
 #import "DMPDFPage.h"
+#import "DMPDFPageImageView.h"
 
 #define DMPDFPageMargin 10.0
 #define DMPDFZoomMin 1.0
 #define DMPDFZoomMax 5.0
 #define DMPDFZoomInc 1.0
-#define DMPDFPageBuffer 5
+#define DMPDFPageBuffer 1
 
-@interface DMPDFPageReference : NSObject
+@interface DMPDFPageViewPair : NSObject
 @property (nonatomic, strong) DMPDFPage* page;
 @property (nonatomic, strong) DMPDFPageView* view;
 @end
@@ -20,7 +21,7 @@
 @property (nonatomic, strong) DMPDFDocument* document;
 @property (nonatomic, strong) UIScrollView* scrollView;
 @property (nonatomic, strong) UIView* containerView;
-@property (nonatomic, strong) NSArray*pages;
+@property (nonatomic, strong) NSArray* pages;
 @property (nonatomic, strong) UILabel* pageLabel;
 @property (nonatomic, strong) DMPDFIndexView* indexView;
 @end
@@ -57,7 +58,6 @@
     doubleMultiTap.numberOfTouchesRequired = 2;
     [self addGestureRecognizer:doubleMultiTap];
     [singleTap requireGestureRecognizerToFail:doubleTap];
-
     self.pageLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, self.frame.size.height - 45, 80, 30)];
     self.pageLabel.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin;
     self.pageLabel.textColor = UIColor.whiteColor;
@@ -75,9 +75,9 @@
     self.document = [[DMPDFDocument alloc] initWithUrl:pdfUrl];
     NSMutableArray* pageViews = [NSMutableArray arrayWithCapacity:self.document.numberOfPages];
     for (DMPDFPage* page in self.document.pages) {
-        DMPDFPageReference* reference = [DMPDFPageReference new];
+        DMPDFPageViewPair* reference = [DMPDFPageViewPair new];
         reference.page = page;
-        reference.view = [[DMPDFPageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) andPage:page];
+        reference.view = [[DMPDFPageImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) andPage:page];
         reference.view.layer.shadowOffset = CGSizeMake(3, 3);
         reference.view.layer.shadowColor = [UIColor blackColor].CGColor;
         reference.view.layer.shadowOpacity = .5;
@@ -90,9 +90,8 @@
     [self setNeedsLayout];
     self.pageLabel.hidden = NO;
     [self showPageLabel];
-
     if(self.showsIndex) {
-        self.indexView = [[DMPDFIndexView alloc] initWithFrame:CGRectMake(self.frame.size.width - 100, 0, 100, self.frame.size.height) andDocument:self.document.reference];
+        self.indexView = [[DMPDFIndexView alloc] initWithFrame:CGRectMake(self.frame.size.width - 100, 0, 100, self.frame.size.height) andDocument:self.document];
         self.indexView.delegate = self;
         [self addSubview:self.indexView];
         [self.indexView highlight:currentPage];
@@ -119,7 +118,7 @@
      NSUInteger start = (NSUInteger) MAX((NSInteger)currentPage - DMPDFPageBuffer, 0);
      NSUInteger end = MIN(self.pages.count - 1, currentPage + DMPDFPageBuffer);
      for (NSUInteger i = 0; i < self.pages.count; i++) {
-         DMPDFPageReference* item = self.pages[i];
+         DMPDFPageViewPair* item = self.pages[i];
          if (i < start || i > end) {
              [item.view unload];
          } else {
@@ -161,19 +160,17 @@
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
     self.pageLabel.text = [NSString stringWithFormat:@"%d / %d", (int)currentPage + 1, (int)self.pages.count];
     if(!self.pageLabel.alpha) {
-        [UIView beginAnimations:@"" context:nil];
-        [UIView setAnimationDuration:.5];
-        self.pageLabel.alpha = 1;
-        [UIView commitAnimations];
+        [UIView animateWithDuration:.5 animations:^{
+            self.pageLabel.alpha = 1;
+        }];
     }
     [self performSelector:@selector(hidePageLabel) withObject:nil afterDelay:1.5];
 }
 
 - (void)hidePageLabel {
-    [UIView beginAnimations:@"" context:nil];
-    [UIView setAnimationDuration:.5];
-    self.pageLabel.alpha = 0;
-    [UIView commitAnimations];
+    [UIView animateWithDuration:.5 animations:^{
+        self.pageLabel.alpha = 0;
+    }];
 }
 
 - (NSUInteger)pageForContentOffset {
@@ -183,7 +180,7 @@
     CGFloat offset = MAX(self.scrollView.contentOffset.y, DMPDFPageMargin);
     offset += self.frame.size.height / 2;
     NSUInteger idx = 0;
-    for(DMPDFPageReference* reference in self.pages) {
+    for(DMPDFPageViewPair* reference in self.pages) {
         if(reference.view.frame.origin.y - DMPDFPageMargin > offset) {
             return MAX(0 ,idx -1);
         }
@@ -198,7 +195,7 @@
 
 - (void)goto:(NSUInteger)page animated:(BOOL)animated {
     if(page != currentPage && page < self.pages.count) {
-        DMPDFPageReference* pageReference = self.pages[page];
+        DMPDFPageViewPair* pageReference = self.pages[page];
         if(pageReference) {
             [self.scrollView setContentOffset:CGPointMake(0, pageReference.view.frame.origin.y) animated:animated];
         }
@@ -221,20 +218,20 @@
              CGRect indexFrame = self.indexView.frame;
              self.indexView.frame = CGRectMake(self.frame.size.width - indexFrame.size.width, indexFrame.origin.y, indexFrame.size.width, indexFrame.size.height);
          }
-         completion:^(BOOL finished) {
-         }];
+         completion:nil
+    ];
 }
 
 - (void)hideIndex {
     if(!indexVisible) return;
     indexVisible = NO;
     [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut | UIViewAnimationOptionBeginFromCurrentState
-                     animations:^{
-                         CGRect indexFrame = self.indexView.frame;
-                         self.indexView.frame = CGRectMake(self.frame.size.width, indexFrame.origin.y, indexFrame.size.width, indexFrame.size.height);
-                     }
-                     completion:^(BOOL finished) {
-                     }];
+         animations:^{
+             CGRect indexFrame = self.indexView.frame;
+             self.indexView.frame = CGRectMake(self.frame.size.width, indexFrame.origin.y, indexFrame.size.width, indexFrame.size.height);
+         }
+         completion:nil
+    ];
 }
 
 #pragma mark - DMPDFIndexViewDelegate
@@ -262,7 +259,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     CGFloat offset = DMPDFPageMargin;
-    for(DMPDFPageReference* pageReference in self.pages) {
+    for(DMPDFPageViewPair* pageReference in self.pages) {
         CGSize pageSize = pageReference.page.size;
         CGFloat scale = (self.frame.size.width - DMPDFPageMargin *2) / pageSize.width;
         pageReference.view.frame = CGRectMake(DMPDFPageMargin, offset, pageSize.width * scale, pageSize.height * scale);
@@ -289,5 +286,5 @@
 
 @end
 
-@implementation DMPDFPageReference
+@implementation DMPDFPageViewPair
 @end
