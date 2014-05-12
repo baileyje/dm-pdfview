@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "DMPDFView.h"
 
 @class DMPDFPage;
 
@@ -10,10 +11,12 @@
 
 @property (nonatomic, readonly) DMPDFPage* page;
 
-- (instancetype)initWithFrame:(CGRect)frame andPage:(DMPDFPage*)page;
+- (instancetype)initWithFrame:(CGRect)frame page:(DMPDFPage*)page renderQuality:(DMPDFRenderQuality)quality;
 
-- (void)load;
+- (void)render;
 
-- (void)unload;
+- (void)clear;
+
+- (CGSize)renderSize;
 
 @end

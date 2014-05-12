@@ -10,7 +10,7 @@
 }
 
 -(void)drawLayer:(CALayer*)layer inContext:(CGContextRef)context {
-    if(loaded) [self.page renderInto:context withSize:self.bounds.size];
+    if(loaded) [self.page renderInto:context withSize:self.renderSize];
 }
 
 @end

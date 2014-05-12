@@ -1,22 +1,23 @@
-#import <UIKit/UIKit.h>
 #import "DMPDFPage.h"
 #import "DMPDFDocument.h"
 
+@interface DMPDFDocument(internal)
+-(CGPDFDocumentRef)reference;
+@end
+
 @interface DMPDFPage()
-@property (nonatomic) CGPDFPageRef reference;
 
 @property (nonatomic) CGSize size;
 
 @property (nonatomic) NSUInteger number;
+
 @end
 
 @implementation DMPDFPage
 
 - (instancetype)initWithReference:(CGPDFPageRef)reference andDocument:(DMPDFDocument*)document {
     if(self = [super init]) {
-        self.reference = reference;
-        CGPDFPageRetain(self.reference);
-        self.size = [DMPDFPage pageSize:self.reference];
+        self.size = [DMPDFPage pageSize:reference];
         self.number = CGPDFPageGetPageNumber(reference);
         self.document = document;
     }
@@ -28,18 +29,20 @@
 }
 
 - (void)renderInto:(CGContextRef)context withSize:(CGSize)constraint {
-    if(self.reference == NULL) return;
+    CGPDFDocumentRef documentReference = self.document.reference;
+    CGPDFPageRef pageReference = CGPDFDocumentGetPage(documentReference, self.number);
     CGContextSetRGBFillColor(context, 1.0f, 1.0f, 1.0f, 1.0f);
     CGContextFillRect(context, CGRectMake(0, 0, constraint.width, constraint.height));
     CGContextGetCTM(context);
     CGContextScaleCTM(context, 1, -1);
     CGContextTranslateCTM(context, 0, -constraint.height);
-    CGRect mediaRect = CGPDFPageGetBoxRect(self.reference, kCGPDFCropBox);
+    CGRect mediaRect = CGPDFPageGetBoxRect(pageReference, kCGPDFCropBox);
     CGContextScaleCTM(context, constraint.width / mediaRect.size.width, constraint.height / mediaRect.size.height);
     CGContextTranslateCTM(context, -mediaRect.origin.x, -mediaRect.origin.y);
     CGContextSetInterpolationQuality(context, kCGInterpolationHigh);
     CGContextSetRenderingIntent(context, kCGRenderingIntentDefault);
-    CGContextDrawPDFPage(context, self.reference);
+    CGContextDrawPDFPage(context, pageReference);
+    CGPDFDocumentRelease(documentReference);
 }
 
 - (UIImage*)asImage {
@@ -71,14 +74,5 @@
         }
     }
 }
-
-- (void)dealloc {
-    NSLog(@"Page DEALLOC");
-    if(self.reference != NULL) {
-        CGPDFPageRelease(self.reference);
-    }
-    self.reference = NULL;
-}
-
 
 @end

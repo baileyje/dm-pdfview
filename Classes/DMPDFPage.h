@@ -7,8 +7,6 @@
 
 @property (nonatomic, assign) DMPDFDocument* document;
 
-@property (nonatomic, readonly) CGPDFPageRef reference;
-
 @property (nonatomic, readonly) CGSize size;
 
 @property (nonatomic, readonly) NSUInteger number;
