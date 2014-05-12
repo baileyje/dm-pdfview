@@ -28,7 +28,7 @@
     return self;
 }
 
-- (void)doLoad {
+- (void)doRender {
     __weak DMPDFPageImageView* _self = self;
     dispatch_async(DMPDFPageImageView.dispatchQueue, ^{
         UIImage* image = [_self.page asImageWithSize:_self.renderSize];
@@ -38,7 +38,7 @@
     });
 }
 
-- (void)doUnload {
+- (void)doClear {
     self.imageView.image = nil;
 }
 

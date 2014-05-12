@@ -5,8 +5,8 @@
 @interface DMPDFPageView ()
 @property (nonatomic, strong) DMPDFPage* page;
 @property (nonatomic) DMPDFRenderQuality renderQuality;
-- (void)doLoad;
-- (void)doUnload;
+- (void)doRender;
+- (void)doClear;
 @end
 
 @implementation DMPDFPageView
@@ -23,14 +23,14 @@
 - (void)render {
     if(!loaded) {
         loaded = YES;
-        [self doLoad];
+        [self doRender];
     }
 }
 
 - (void)clear {
     if(loaded) {
         loaded = NO;
-        [self doUnload];
+        [self doClear];
     }
 }
 
@@ -39,11 +39,11 @@
     return CGSizeMake(self.frame.size.width * scale, self.frame.size.height * scale);
 }
 
-- (void)doLoad {
+- (void)doRender {
     [self setNeedsDisplay];
 }
 
-- (void)doUnload {
+- (void)doClear {
     [self setNeedsDisplay];
 }
 

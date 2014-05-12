@@ -27,8 +27,9 @@
 - (void)load:(NSURL*)pdfUrl {
     self.document = [[DMPDFDocument alloc] initWithUrl:pdfUrl];
     NSMutableArray* pageViews = [NSMutableArray arrayWithCapacity:self.document.numberOfPages];
+    CGFloat offset = DMPDFPageMargin;
     for (DMPDFPage* page in self.document.pages) {
-        DMPDFPageView* pageView = [[DMPDFPageImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) page:page renderQuality:self.renderQuality];
+        DMPDFPageView* pageView = [[DMPDFPageImageView alloc] initWithFrame:CGRectMake(0, offset, self.frame.size.width, self.frame.size.height) page:page renderQuality:self.renderQuality];
         pageView.layer.shadowOffset = CGSizeMake(3, 3);
         pageView.layer.shadowColor = [UIColor blackColor].CGColor;
         pageView.layer.shadowOpacity = .5;
@@ -36,6 +37,7 @@
         pageView.layer.borderWidth = 1;
         [self.containerView addSubview:pageView];
         [pageViews addObject:pageView];
+        offset += pageView.frame.size.height + DMPDFPageMargin;
     }
     self.pages = [NSArray arrayWithArray:pageViews];
     if(self.showsIndex) {
