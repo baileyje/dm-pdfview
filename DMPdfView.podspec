@@ -7,8 +7,8 @@ Pod::Spec.new do |spec|
   spec.description = <<-DESC
     This library is intended to replace the QuickLook PDF viewer with more configurability, embeddability and extendibility.
   DESC
-  spec.homepage = 'http://devmode.com/projects/dm-pdfview'
-  spec.documentation_url = 'http://devmode.com/projects/dm-pdfview'
+  spec.homepage = 'http://devmode.com/projects/dm-pdf-view'
+  spec.documentation_url = 'http://devmode.com/projects/dm-pdf-view'
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   spec.license = { :type => 'MIT', :file =>  'LICENSE-MIT' }
