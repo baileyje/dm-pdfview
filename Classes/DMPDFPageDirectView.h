@@ -1,8 +1,8 @@
 #import <UIKit/UIKit.h>
-#import "DMPDFPageView.h"
+#import "DMPdfPageView.h"
 
-@class DMPDFPage;
+@class DMPdfPage;
 
-@interface DMPDFPageDirectView : DMPDFPageView
+@interface DMPdfPageDirectView : DMPdfPageView
 
 @end

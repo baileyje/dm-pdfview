@@ -1,26 +1,26 @@
-#import "DMPDFIndexView.h"
-#import "DMPDFPageImageView.h"
-#import "DMPDFDocument.h"
-#import "DMPDFPage.h"
-#import "DMPDFView.h"
+#import "DMPdfIndexView.h"
+#import "DMPdfPageImageView.h"
+#import "DMPdfDocument.h"
+#import "DMPdfPage.h"
+#import "DMPdfView.h"
 
-#define DMPDFIndexPageMargin 15.0
-#define DMPDFIndexHighlightBoost 15.0
+#define DMPdfIndexPageMargin 15.0
+#define DMPdfIndexHighlightBoost 15.0
 
-@interface DMPDFIndexPageTap : UITapGestureRecognizer
+@interface DMPdfIndexPageTap : UITapGestureRecognizer
 @property (nonatomic) NSUInteger page;
 @end
 
-@interface DMPDFIndexView()
+@interface DMPdfIndexView ()
 @property (nonatomic, strong) NSArray* pages;
 @property (nonatomic, strong) UIView* current;
 @property (nonatomic, strong) UIScrollView* scrollView;
 @end
 
-@implementation DMPDFIndexView
+@implementation DMPdfIndexView
 
 
-- (instancetype)initWithFrame:(CGRect)frame andDocument:(DMPDFDocument*)document {
+- (instancetype)initWithFrame:(CGRect)frame andDocument:(DMPdfDocument*)document {
     if(self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor colorWithRed:.95 green:.95 blue:.95 alpha:.8];
         self.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin;
@@ -34,20 +34,20 @@
         self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
         [self addSubview:self.scrollView];
         NSMutableArray* pages = [NSMutableArray arrayWithCapacity:document.numberOfPages];
-        CGFloat offset = DMPDFIndexPageMargin;
-        for (DMPDFPage* page in document.pages) {
-            CGFloat scale = (self.frame.size.width - DMPDFIndexPageMargin *2) / page.size.width;
-            CGRect thumbFrame = CGRectMake(DMPDFIndexPageMargin, offset, page.size.width * scale, page.size.height * scale);
-            DMPDFPageImageView* pageView = [[DMPDFPageImageView alloc] initWithFrame:thumbFrame page:page renderQuality:DMPDFRenderQualityHigh];
+        CGFloat offset = DMPdfIndexPageMargin;
+        for (DMPdfPage* page in document.pages) {
+            CGFloat scale = (self.frame.size.width - DMPdfIndexPageMargin *2) / page.size.width;
+            CGRect thumbFrame = CGRectMake(DMPdfIndexPageMargin, offset, page.size.width * scale, page.size.height * scale);
+            DMPdfPageImageView* pageView = [[DMPdfPageImageView alloc] initWithFrame:thumbFrame page:page renderQuality:DMPdfRenderQualityHigh];
             [pageView render];
-            DMPDFIndexPageTap* recognizer = [[DMPDFIndexPageTap alloc] initWithTarget:self action:@selector(pageTapped:)];
+            DMPdfIndexPageTap* recognizer = [[DMPdfIndexPageTap alloc] initWithTarget:self action:@selector(pageTapped:)];
             recognizer.page = page.number - 1;
             [pageView addGestureRecognizer:recognizer];
             pageView.layer.borderColor = [UIColor colorWithRed:.8 green:.8 blue:.8 alpha:.8].CGColor;
             pageView.layer.borderWidth = 1;
             [self.scrollView addSubview:pageView];
             [pages addObject:pageView];
-            offset += thumbFrame.size.height + DMPDFIndexPageMargin;
+            offset += thumbFrame.size.height + DMPdfIndexPageMargin;
         }
         self.pages = [NSArray arrayWithArray:pages];
         self.scrollView.contentSize = CGSizeMake(frame.size.width, offset);
@@ -62,17 +62,17 @@
     [UIView animateWithDuration:.5 animations:^{
         if(self.current) {
             CGRect currentFrame = self.current.frame;
-            self.current.frame = CGRectMake(currentFrame.origin.x + DMPDFIndexHighlightBoost/2.0, currentFrame.origin.y + DMPDFIndexHighlightBoost/2.0, currentFrame.size.width - DMPDFIndexHighlightBoost, currentFrame.size.height - DMPDFIndexHighlightBoost);
+            self.current.frame = CGRectMake(currentFrame.origin.x + DMPdfIndexHighlightBoost/2.0, currentFrame.origin.y + DMPdfIndexHighlightBoost/2.0, currentFrame.size.width - DMPdfIndexHighlightBoost, currentFrame.size.height - DMPdfIndexHighlightBoost);
         }
         self.current = self.pages[page];
         CGRect frame = self.current.frame;
-        self.current.frame = CGRectMake(frame.origin.x - DMPDFIndexHighlightBoost/2.0, frame.origin.y - DMPDFIndexHighlightBoost/2.0, frame.size.width + DMPDFIndexHighlightBoost, frame.size.height + DMPDFIndexHighlightBoost);
+        self.current.frame = CGRectMake(frame.origin.x - DMPdfIndexHighlightBoost/2.0, frame.origin.y - DMPdfIndexHighlightBoost/2.0, frame.size.width + DMPdfIndexHighlightBoost, frame.size.height + DMPdfIndexHighlightBoost);
         [self.scrollView scrollRectToVisible:self.current.frame animated:YES];
     }];
 
 }
 
-- (void)pageTapped:(DMPDFIndexPageTap*)gesture {
+- (void)pageTapped:(DMPdfIndexPageTap*)gesture {
     if(self.delegate) {
         [self.delegate indexPageSelected:gesture.page];
     }
@@ -80,5 +80,5 @@
 
 @end
 
-@implementation DMPDFIndexPageTap
+@implementation DMPdfIndexPageTap
 @end

@@ -1,12 +1,10 @@
-#import <DMPDFView/DMPDFView.h>
+#import <DMPdfView/DMPdfView.h>
 #import "ViewController.h"
-#import "DMPDFView.h"
-#import "PreviewUtil.h"
 
 @implementation ViewController
 
 - (void)load {
-    self.pdfView.renderQuality = DMPDFRenderQualityLow;
+    self.pdfView.renderQuality = DMPdfRenderQualityLow;
     [self.pdfView load:[[NSBundle mainBundle] URLForResource:@"test" withExtension:@"pdf"]];
     self.navigationItem.leftBarButtonItem.enabled = NO;
     self.navigationItem.rightBarButtonItem.enabled = YES;

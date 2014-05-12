@@ -1,13 +1,13 @@
-#import "DMPDFPageImageView.h"
-#import "DMPDFPage.h"
-#import "DMPDFView.h"
+#import "DMPdfPageImageView.h"
+#import "DMPdfPage.h"
+#import "DMPdfView.h"
 
-@interface DMPDFPageImageView()
+@interface DMPdfPageImageView ()
 @property (nonatomic, strong) UIImageView* imageView;
 @end
 
 
-@implementation DMPDFPageImageView
+@implementation DMPdfPageImageView
 
 + (dispatch_queue_t)dispatchQueue {
     static dispatch_queue_t dispatchQueue = NULL;
@@ -18,7 +18,7 @@
     return dispatchQueue;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame page:(DMPDFPage*)page renderQuality:(DMPDFRenderQuality)quality {
+- (instancetype)initWithFrame:(CGRect)frame page:(DMPdfPage*)page renderQuality:(DMPdfRenderQuality)quality {
     if(self = [super initWithFrame:frame page:page renderQuality:quality]) {
         self.autoresizesSubviews = YES;
         self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
@@ -29,8 +29,8 @@
 }
 
 - (void)doRender {
-    __weak DMPDFPageImageView* _self = self;
-    dispatch_async(DMPDFPageImageView.dispatchQueue, ^{
+    __weak DMPdfPageImageView* _self = self;
+    dispatch_async(DMPdfPageImageView.dispatchQueue, ^{
         UIImage* image = [_self.page asImageWithSize:_self.renderSize];
         dispatch_async(dispatch_get_main_queue(), ^{
             _self.imageView.image = image;

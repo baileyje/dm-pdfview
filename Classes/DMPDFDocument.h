@@ -1,7 +1,7 @@
 #import <CoreGraphics/CoreGraphics.h>
 
 
-@interface DMPDFDocument : NSObject
+@interface DMPdfDocument : NSObject
 
 @property (nonatomic, readonly) NSUInteger numberOfPages;
 

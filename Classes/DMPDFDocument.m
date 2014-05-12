@@ -1,7 +1,7 @@
-#import "DMPDFDocument.h"
-#import "DMPDFPage.h"
+#import "DMPdfDocument.h"
+#import "DMPdfPage.h"
 
-@interface DMPDFDocument()
+@interface DMPdfDocument ()
 
 @property (nonatomic, copy) NSURL* url;
 
@@ -11,7 +11,7 @@
 
 @end
 
-@implementation DMPDFDocument
+@implementation DMPdfDocument
 
 - (instancetype)initWithUrl:(NSURL*)url {
     if(self = [super init]) {
@@ -20,7 +20,7 @@
         self.numberOfPages = CGPDFDocumentGetNumberOfPages(reference);
         NSMutableArray* pages = [NSMutableArray arrayWithCapacity:self.numberOfPages];
         for (NSUInteger pageNumber = 1; pageNumber <= self.numberOfPages; pageNumber++) {
-            [pages addObject:[[DMPDFPage alloc] initWithReference:CGPDFDocumentGetPage(reference, pageNumber) andDocument:self]];
+            [pages addObject:[[DMPdfPage alloc] initWithReference:CGPDFDocumentGetPage(reference, pageNumber) andDocument:self]];
         }
         self.pages = [NSArray arrayWithArray:pages];
         CGPDFDocumentRelease(reference);

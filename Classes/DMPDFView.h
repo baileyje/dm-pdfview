@@ -1,12 +1,12 @@
 #import <UIKit/UIKit.h>
 
 typedef enum {
-    DMPDFRenderQualityHigh,
-    DMPDFRenderQualityMedium,
-    DMPDFRenderQualityLow
-} DMPDFRenderQuality;
+    DMPdfRenderQualityHigh,
+    DMPdfRenderQualityMedium,
+    DMPdfRenderQualityLow
+} DMPdfRenderQuality;
 
-@interface DMPDFView : UIView
+@interface DMPdfView : UIView
 
 @property (nonatomic) NSUInteger currentPage;
 
@@ -22,7 +22,7 @@ typedef enum {
 
 @property (nonatomic) CGFloat indexWidth;
 
-@property (nonatomic) DMPDFRenderQuality renderQuality;
+@property (nonatomic) DMPdfRenderQuality renderQuality;
 
 - (void)load:(NSURL*)pdfUrl;
 

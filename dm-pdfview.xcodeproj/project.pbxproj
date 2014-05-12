@@ -8,18 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		88BE20EB8F42925CDBF9F91C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BE2E67BC984B616874EC44 /* UIKit.framework */; };
-		88BE21E0E2E7C899DE90D90E /* DMPDFPageImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2A12BBA86745B9E2CD78 /* DMPDFPageImageView.m */; };
-		88BE23F94F416CD5297BA18A /* DMPDFPageDirectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE258FE5947C209069AF7B /* DMPDFPageDirectView.m */; };
-		88BE249CD4624F8F34041E9A /* DMPDFIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE254EEBC62A9E207072DE /* DMPDFIndexView.m */; };
-		88BE24E23869CF735DE08269 /* DMPDFView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2007EB975D39A2D2DDAC /* DMPDFView.m */; };
+		88BE21E0E2E7C899DE90D90E /* DMPdfPageImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2A12BBA86745B9E2CD78 /* DMPdfPageImageView.m */; };
+		88BE23F94F416CD5297BA18A /* DMPdfPageDirectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE258FE5947C209069AF7B /* DMPdfPageDirectView.m */; };
+		88BE249CD4624F8F34041E9A /* DMPdfIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE254EEBC62A9E207072DE /* DMPdfIndexView.m */; };
+		88BE24E23869CF735DE08269 /* DMPdfView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2007EB975D39A2D2DDAC /* DMPdfView.m */; };
 		88BE2593BC44F3F33BF58EFF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BE2E67BC984B616874EC44 /* UIKit.framework */; };
 		88BE26C9ECE7E3E1186BE6C5 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BE27435A38EEE220A93581 /* XCTest.framework */; };
 		88BE26EF19347531C6D36903 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BE2405C948922804FDE073 /* Foundation.framework */; };
-		88BE27272D4B284DD59A57EB /* DMPDFDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2EF424E52F08AE5A4373 /* DMPDFDocument.m */; };
+		88BE27272D4B284DD59A57EB /* DMPdfDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE2EF424E52F08AE5A4373 /* DMPdfDocument.m */; };
 		88BE2A9F3097AD5D4238FFEA /* libdm-pdfview.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BE23CADA9EFC0B72750EF9 /* libdm-pdfview.a */; };
 		88BE2C4D1C232746094EFB0C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88BE2405C948922804FDE073 /* Foundation.framework */; };
-		88BE2D0B340B2A4D733A4B73 /* DMPDFPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE220BBC33393C1F59F166 /* DMPDFPage.m */; };
-		88BE2DFD73C294E487B77549 /* DMPDFPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE28F0048542F286E11B68 /* DMPDFPageView.m */; };
+		88BE2D0B340B2A4D733A4B73 /* DMPdfPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE220BBC33393C1F59F166 /* DMPdfPage.m */; };
+		88BE2DFD73C294E487B77549 /* DMPdfPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BE28F0048542F286E11B68 /* DMPdfPageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,27 +45,27 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		88BE2007EB975D39A2D2DDAC /* DMPDFView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMPDFView.m; sourceTree = "<group>"; };
-		88BE220BBC33393C1F59F166 /* DMPDFPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMPDFPage.m; sourceTree = "<group>"; };
+		88BE2007EB975D39A2D2DDAC /* DMPdfView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMPdfView.m; sourceTree = "<group>"; };
+		88BE220BBC33393C1F59F166 /* DMPdfPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMPdfPage.m; sourceTree = "<group>"; };
 		88BE23CADA9EFC0B72750EF9 /* libdm-pdfview.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libdm-pdfview.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		88BE2405C948922804FDE073 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		88BE2429166AAE0F850205C6 /* dm-pdfview-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "dm-pdfview-Prefix.pch"; sourceTree = "<group>"; };
-		88BE248A12D9D5E8BCD1B3DD /* DMPDFView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMPDFView.h; sourceTree = "<group>"; };
-		88BE254EEBC62A9E207072DE /* DMPDFIndexView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMPDFIndexView.m; sourceTree = "<group>"; };
-		88BE258FE5947C209069AF7B /* DMPDFPageDirectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMPDFPageDirectView.m; sourceTree = "<group>"; };
+		88BE248A12D9D5E8BCD1B3DD /* DMPdfView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMPdfView.h; sourceTree = "<group>"; };
+		88BE254EEBC62A9E207072DE /* DMPdfIndexView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMPdfIndexView.m; sourceTree = "<group>"; };
+		88BE258FE5947C209069AF7B /* DMPdfPageDirectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMPdfPageDirectView.m; sourceTree = "<group>"; };
 		88BE27435A38EEE220A93581 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		88BE28BBF0C768D7454741A7 /* DMPDFPageDirectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMPDFPageDirectView.h; sourceTree = "<group>"; };
-		88BE28F0048542F286E11B68 /* DMPDFPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMPDFPageView.m; sourceTree = "<group>"; };
-		88BE2921E14C9BF3C21EFD73 /* DMPDFDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMPDFDocument.h; sourceTree = "<group>"; };
-		88BE2A12BBA86745B9E2CD78 /* DMPDFPageImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMPDFPageImageView.m; sourceTree = "<group>"; };
+		88BE28BBF0C768D7454741A7 /* DMPdfPageDirectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMPdfPageDirectView.h; sourceTree = "<group>"; };
+		88BE28F0048542F286E11B68 /* DMPdfPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMPdfPageView.m; sourceTree = "<group>"; };
+		88BE2921E14C9BF3C21EFD73 /* DMPdfDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMPdfDocument.h; sourceTree = "<group>"; };
+		88BE2A12BBA86745B9E2CD78 /* DMPdfPageImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMPdfPageImageView.m; sourceTree = "<group>"; };
 		88BE2A3EBC8F095E7EE58BA1 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
-		88BE2B1F67E5361089FFB889 /* DMPDFPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMPDFPageView.h; sourceTree = "<group>"; };
-		88BE2B7CEE8D923207A7ABAF /* DMPDFPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMPDFPage.h; sourceTree = "<group>"; };
-		88BE2BD193751640B80FDD06 /* DMPDFIndexView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMPDFIndexView.h; sourceTree = "<group>"; };
-		88BE2C197575C85EE9B22C2B /* DMPDFPageImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMPDFPageImageView.h; sourceTree = "<group>"; };
-		88BE2E525143292592596264 /* DMPDFView.podspec */ = {isa = PBXFileReference; lastKnownFileType = file.podspec; path = DMPDFView.podspec; sourceTree = "<group>"; };
+		88BE2B1F67E5361089FFB889 /* DMPdfPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMPdfPageView.h; sourceTree = "<group>"; };
+		88BE2B7CEE8D923207A7ABAF /* DMPdfPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMPdfPage.h; sourceTree = "<group>"; };
+		88BE2BD193751640B80FDD06 /* DMPdfIndexView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMPdfIndexView.h; sourceTree = "<group>"; };
+		88BE2C197575C85EE9B22C2B /* DMPdfPageImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMPdfPageImageView.h; sourceTree = "<group>"; };
+		88BE2E525143292592596264 /* DMPdfView.podspec */ = {isa = PBXFileReference; lastKnownFileType = file.podspec; path = DMPdfView.podspec; sourceTree = "<group>"; };
 		88BE2E67BC984B616874EC44 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		88BE2EF424E52F08AE5A4373 /* DMPDFDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMPDFDocument.m; sourceTree = "<group>"; };
+		88BE2EF424E52F08AE5A4373 /* DMPdfDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMPdfDocument.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +99,7 @@
 				88BE2672FC0E944FA5605293 /* Frameworks */,
 				88BE2429166AAE0F850205C6 /* dm-pdfview-Prefix.pch */,
 				88BE2912A5578746811A1161 /* Classes */,
-				88BE2E525143292592596264 /* DMPDFView.podspec */,
+				88BE2E525143292592596264 /* DMPdfView.podspec */,
 				88BE2A3EBC8F095E7EE58BA1 /* Podfile */,
 			);
 			sourceTree = "<group>";
@@ -117,20 +117,20 @@
 		88BE2912A5578746811A1161 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				88BE2007EB975D39A2D2DDAC /* DMPDFView.m */,
-				88BE248A12D9D5E8BCD1B3DD /* DMPDFView.h */,
-				88BE2C197575C85EE9B22C2B /* DMPDFPageImageView.h */,
-				88BE2A12BBA86745B9E2CD78 /* DMPDFPageImageView.m */,
-				88BE28BBF0C768D7454741A7 /* DMPDFPageDirectView.h */,
-				88BE258FE5947C209069AF7B /* DMPDFPageDirectView.m */,
-				88BE254EEBC62A9E207072DE /* DMPDFIndexView.m */,
-				88BE2BD193751640B80FDD06 /* DMPDFIndexView.h */,
-				88BE2EF424E52F08AE5A4373 /* DMPDFDocument.m */,
-				88BE2921E14C9BF3C21EFD73 /* DMPDFDocument.h */,
-				88BE220BBC33393C1F59F166 /* DMPDFPage.m */,
-				88BE2B7CEE8D923207A7ABAF /* DMPDFPage.h */,
-				88BE28F0048542F286E11B68 /* DMPDFPageView.m */,
-				88BE2B1F67E5361089FFB889 /* DMPDFPageView.h */,
+				88BE2007EB975D39A2D2DDAC /* DMPdfView.m */,
+				88BE248A12D9D5E8BCD1B3DD /* DMPdfView.h */,
+				88BE2C197575C85EE9B22C2B /* DMPdfPageImageView.h */,
+				88BE2A12BBA86745B9E2CD78 /* DMPdfPageImageView.m */,
+				88BE28BBF0C768D7454741A7 /* DMPdfPageDirectView.h */,
+				88BE258FE5947C209069AF7B /* DMPdfPageDirectView.m */,
+				88BE254EEBC62A9E207072DE /* DMPdfIndexView.m */,
+				88BE2BD193751640B80FDD06 /* DMPdfIndexView.h */,
+				88BE2EF424E52F08AE5A4373 /* DMPdfDocument.m */,
+				88BE2921E14C9BF3C21EFD73 /* DMPdfDocument.h */,
+				88BE220BBC33393C1F59F166 /* DMPdfPage.m */,
+				88BE2B7CEE8D923207A7ABAF /* DMPdfPage.h */,
+				88BE28F0048542F286E11B68 /* DMPdfPageView.m */,
+				88BE2B1F67E5361089FFB889 /* DMPdfPageView.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -228,13 +228,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88BE24E23869CF735DE08269 /* DMPDFView.m in Sources */,
-				88BE21E0E2E7C899DE90D90E /* DMPDFPageImageView.m in Sources */,
-				88BE23F94F416CD5297BA18A /* DMPDFPageDirectView.m in Sources */,
-				88BE249CD4624F8F34041E9A /* DMPDFIndexView.m in Sources */,
-				88BE27272D4B284DD59A57EB /* DMPDFDocument.m in Sources */,
-				88BE2D0B340B2A4D733A4B73 /* DMPDFPage.m in Sources */,
-				88BE2DFD73C294E487B77549 /* DMPDFPageView.m in Sources */,
+				88BE24E23869CF735DE08269 /* DMPdfView.m in Sources */,
+				88BE21E0E2E7C899DE90D90E /* DMPdfPageImageView.m in Sources */,
+				88BE23F94F416CD5297BA18A /* DMPdfPageDirectView.m in Sources */,
+				88BE249CD4624F8F34041E9A /* DMPdfIndexView.m in Sources */,
+				88BE27272D4B284DD59A57EB /* DMPdfDocument.m in Sources */,
+				88BE2D0B340B2A4D733A4B73 /* DMPdfPage.m in Sources */,
+				88BE2DFD73C294E487B77549 /* DMPdfPageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

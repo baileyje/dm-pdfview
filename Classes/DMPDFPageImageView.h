@@ -1,7 +1,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreGraphics/CoreGraphics.h>
-#import "DMPDFPageView.h"
+#import "DMPdfPageView.h"
 
-@interface DMPDFPageImageView : DMPDFPageView
+@interface DMPdfPageImageView : DMPdfPageView
 
 @end

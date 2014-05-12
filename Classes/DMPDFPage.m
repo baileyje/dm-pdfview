@@ -1,11 +1,11 @@
-#import "DMPDFPage.h"
-#import "DMPDFDocument.h"
+#import "DMPdfPage.h"
+#import "DMPdfDocument.h"
 
-@interface DMPDFDocument(internal)
+@interface DMPdfDocument (internal)
 -(CGPDFDocumentRef)reference;
 @end
 
-@interface DMPDFPage()
+@interface DMPdfPage ()
 
 @property (nonatomic) CGSize size;
 
@@ -13,11 +13,11 @@
 
 @end
 
-@implementation DMPDFPage
+@implementation DMPdfPage
 
-- (instancetype)initWithReference:(CGPDFPageRef)reference andDocument:(DMPDFDocument*)document {
+- (instancetype)initWithReference:(CGPDFPageRef)reference andDocument:(DMPdfDocument*)document {
     if(self = [super init]) {
-        self.size = [DMPDFPage pageSize:reference];
+        self.size = [DMPdfPage pageSize:reference];
         self.number = CGPDFPageGetPageNumber(reference);
         self.document = document;
     }

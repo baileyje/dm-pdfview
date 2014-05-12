@@ -1,10 +1,10 @@
 #import <UIKit/UIKit.h>
 
-@class DMPDFView;
+@class DMPdfView;
 
 @interface ViewController : UIViewController
 
-@property (nonatomic, strong) IBOutlet DMPDFView* pdfView;
+@property (nonatomic, strong) IBOutlet DMPdfView* pdfView;
 
 - (IBAction)load;
 

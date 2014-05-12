@@ -1,17 +1,17 @@
 #import <UIKit/UIKit.h>
 
-@class DMPDFDocument;
+@class DMPdfDocument;
 
-@protocol DMPDFIndexViewDelegate
+@protocol DMPdfIndexViewDelegate
 - (void)indexPageSelected:(NSUInteger)page;
 @end
 
 
-@interface DMPDFIndexView : UIView
+@interface DMPdfIndexView : UIView
 
-@property (nonatomic, assign) id<DMPDFIndexViewDelegate> delegate;
+@property (nonatomic, assign) id<DMPdfIndexViewDelegate> delegate;
 
-- (instancetype)initWithFrame:(CGRect)frame andDocument:(DMPDFDocument*)document;
+- (instancetype)initWithFrame:(CGRect)frame andDocument:(DMPdfDocument*)document;
 
 - (void)highlight:(NSUInteger)page;
 

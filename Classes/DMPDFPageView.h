@@ -1,17 +1,17 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "DMPDFView.h"
+#import "DMPdfView.h"
 
-@class DMPDFPage;
+@class DMPdfPage;
 
 
-@interface DMPDFPageView : UIView {
+@interface DMPdfPageView : UIView {
     BOOL loaded;
 }
 
-@property (nonatomic, readonly) DMPDFPage* page;
+@property (nonatomic, readonly) DMPdfPage* page;
 
-- (instancetype)initWithFrame:(CGRect)frame page:(DMPDFPage*)page renderQuality:(DMPDFRenderQuality)quality;
+- (instancetype)initWithFrame:(CGRect)frame page:(DMPdfPage*)page renderQuality:(DMPdfRenderQuality)quality;
 
 - (void)render;
 

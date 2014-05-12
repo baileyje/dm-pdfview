@@ -1,17 +1,17 @@
-#import "DMPDFPageView.h"
-#import "DMPDFPage.h"
-#import "DMPDFView.h"
+#import "DMPdfPageView.h"
+#import "DMPdfPage.h"
+#import "DMPdfView.h"
 
-@interface DMPDFPageView ()
-@property (nonatomic, strong) DMPDFPage* page;
-@property (nonatomic) DMPDFRenderQuality renderQuality;
+@interface DMPdfPageView ()
+@property (nonatomic, strong) DMPdfPage* page;
+@property (nonatomic) DMPdfRenderQuality renderQuality;
 - (void)doRender;
 - (void)doClear;
 @end
 
-@implementation DMPDFPageView
+@implementation DMPdfPageView
 
-- (instancetype)initWithFrame:(CGRect)frame page:(DMPDFPage*)page renderQuality:(DMPDFRenderQuality)quality {
+- (instancetype)initWithFrame:(CGRect)frame page:(DMPdfPage*)page renderQuality:(DMPdfRenderQuality)quality {
     if(self = [super initWithFrame:frame]) {
         self.page = page;
         self.renderQuality = quality;

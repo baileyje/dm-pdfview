@@ -1,14 +1,14 @@
 PODS:
-  - DMPDFView (0.0.1)
+  - DMPdfView (0.0.1)
 
 DEPENDENCIES:
-  - DMPDFView (from `..`)
+  - DMPdfView (from `..`)
 
 EXTERNAL SOURCES:
-  DMPDFView:
+  DMPdfView:
     :path: ..
 
 SPEC CHECKSUMS:
-  DMPDFView: ae2500c193e35b34da337e859de893ab339407fc
+  DMPdfView: d8a984eb5cb7fba111ef5986d760bb30fc236438
 
 COCOAPODS: 0.32.1

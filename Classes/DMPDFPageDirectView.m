@@ -1,8 +1,8 @@
-#import "DMPDFPageDirectView.h"
-#import "DMPDFPage.h"
+#import "DMPdfPageDirectView.h"
+#import "DMPdfPage.h"
 
 
-@implementation DMPDFPageDirectView
+@implementation DMPdfPageDirectView
 
 #pragma mark - UIView
 
