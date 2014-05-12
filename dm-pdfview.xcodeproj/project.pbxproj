@@ -54,6 +54,8 @@
 		88BE254EEBC62A9E207072DE /* DMPdfIndexView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMPdfIndexView.m; sourceTree = "<group>"; };
 		88BE258FE5947C209069AF7B /* DMPdfPageDirectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMPdfPageDirectView.m; sourceTree = "<group>"; };
 		88BE27435A38EEE220A93581 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		88BE27B32ECA17A204923DC5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; path = README.md; sourceTree = "<group>"; };
+		88BE284686B2FB72F116B608 /* LICENSE-MIT */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "LICENSE-MIT"; sourceTree = "<group>"; };
 		88BE28BBF0C768D7454741A7 /* DMPdfPageDirectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMPdfPageDirectView.h; sourceTree = "<group>"; };
 		88BE28F0048542F286E11B68 /* DMPdfPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DMPdfPageView.m; sourceTree = "<group>"; };
 		88BE2921E14C9BF3C21EFD73 /* DMPdfDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DMPdfDocument.h; sourceTree = "<group>"; };
@@ -101,6 +103,8 @@
 				88BE2912A5578746811A1161 /* Classes */,
 				88BE2E525143292592596264 /* DMPdfView.podspec */,
 				88BE2A3EBC8F095E7EE58BA1 /* Podfile */,
+				88BE284686B2FB72F116B608 /* LICENSE-MIT */,
+				88BE27B32ECA17A204923DC5 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
