@@ -190,11 +190,11 @@
     return self.pages.count - 1;;
 }
 
-- (void)goto:(NSUInteger)page {
-    [self goto:page animated:YES];
+- (void)scrollToPage:(NSUInteger)page {
+    [self scrollToPage:page animated:YES];
 }
 
-- (void)goto:(NSUInteger)page animated:(BOOL)animated {
+- (void)scrollToPage:(NSUInteger)page animated:(BOOL)animated {
     if(page != self.currentPage && page < self.pages.count) {
         DMPdfPageView* pageView = self.pages[page];
         if(pageView) {
@@ -266,7 +266,7 @@
 #pragma mark - DMPdfIndexViewDelegate
 
 - (void)indexPageSelected:(NSUInteger)page {
-    [self goto:page animated:NO];
+    [self scrollToPage:page animated:NO];
 }
 
 #pragma mark - UIView

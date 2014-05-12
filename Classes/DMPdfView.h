@@ -28,9 +28,9 @@ typedef enum {
 
 - (void)cleanup;
 
-- (void)goto:(NSUInteger)page;
+- (void)scrollToPage:(NSUInteger)page;
 
-- (void)goto:(NSUInteger)page animated:(BOOL)animated;
+- (void)scrollToPage:(NSUInteger)page animated:(BOOL)animated;
 
 - (void)showPageNumber;
 
