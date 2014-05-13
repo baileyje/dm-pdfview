@@ -29,6 +29,7 @@
 }
 
 - (void)renderInto:(CGContextRef)context withSize:(CGSize)constraint {
+    if(self.document == nil) return;
     CGPDFDocumentRef documentReference = self.document.reference;
     CGPDFPageRef pageReference = CGPDFDocumentGetPage(documentReference, self.number);
     CGContextSetRGBFillColor(context, 1.0f, 1.0f, 1.0f, 1.0f);

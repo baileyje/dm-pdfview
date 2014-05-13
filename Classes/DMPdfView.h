@@ -24,6 +24,8 @@ typedef enum {
 
 @property (nonatomic) DMPdfRenderQuality renderQuality;
 
+@property (nonatomic) BOOL cachePages;
+
 - (void)load:(NSURL*)pdfUrl;
 
 - (void)cleanup;

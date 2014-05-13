@@ -2,10 +2,10 @@ Pod::Spec.new do |spec|
 
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   spec.name = 'DMPdfView'
-  spec.version = '0.1.0'
-  spec.summary = 'A configurable/extendable iOS library for viewing PDF documents with zooming, page jumping and a thumbnail index.'
+  spec.version = '0.1.1'
+  spec.summary = 'A configurable/extensible iOS library for viewing PDF documents with zooming, page jumping and a thumbnail index.'
   spec.description = <<-DESC
-    This library is intended to replace the QuickLook PDF viewer with more configurability, embeddability and extendibility.
+    This library is intended to replace the QuickLook PDF viewer with more configurability, embeddability and extensibility.
   DESC
   spec.homepage = 'http://devmode.com/projects/dm-pdf-view'
   spec.documentation_url = 'http://devmode.com/projects/dm-pdf-view'
@@ -40,7 +40,7 @@ Pod::Spec.new do |spec|
 
 
   # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  # None
+  spec.dependency 'DMImage', '~> 0.0.1'
 
 
   # ――― Project Settings ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

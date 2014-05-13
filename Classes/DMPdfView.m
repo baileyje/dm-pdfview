@@ -29,7 +29,7 @@
     NSMutableArray* pageViews = [NSMutableArray arrayWithCapacity:self.document.numberOfPages];
     CGFloat offset = DMPdfPageMargin;
     for (DMPdfPage* page in self.document.pages) {
-        DMPdfPageView* pageView = [[DMPdfPageImageView alloc] initWithFrame:CGRectMake(0, offset, self.frame.size.width, self.frame.size.height) page:page renderQuality:self.renderQuality];
+        DMPdfPageView* pageView = [[DMPdfPageImageView alloc] initWithFrame:CGRectMake(0, offset, self.frame.size.width, self.frame.size.height) page:page renderQuality:self.renderQuality cache:self.cachePages];
         pageView.layer.shadowOffset = CGSizeMake(3, 3);
         pageView.layer.shadowColor = [UIColor blackColor].CGColor;
         pageView.layer.shadowOpacity = .5;
@@ -41,7 +41,7 @@
     }
     self.pages = [NSArray arrayWithArray:pageViews];
     if(self.showsIndex) {
-        self.indexView = [[DMPdfIndexView alloc] initWithFrame:CGRectMake(self.frame.size.width - self.indexWidth, 0, self.indexWidth, self.frame.size.height) andDocument:self.document];
+        self.indexView = [[DMPdfIndexView alloc] initWithFrame:CGRectMake(self.frame.size.width - self.indexWidth, 0, self.indexWidth, self.frame.size.height) andDocument:self.document cachePages:self.cachePages];
         self.indexView.delegate = self;
         [self addSubview:self.indexView];
         [self.indexView highlight:self.currentPage];
@@ -106,6 +106,7 @@
     self.pageBuffer = DMPdfPageBuffer;
     self.currentPage = 0;
     self.renderQuality = DMPdfRenderQualityHigh;
+    self.cachePages = YES;
     [self initializeScrollview];
     [self initializeGestures];
 }

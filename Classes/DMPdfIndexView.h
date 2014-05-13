@@ -11,7 +11,7 @@
 
 @property (nonatomic, assign) id<DMPdfIndexViewDelegate> delegate;
 
-- (instancetype)initWithFrame:(CGRect)frame andDocument:(DMPdfDocument*)document;
+- (instancetype)initWithFrame:(CGRect)frame andDocument:(DMPdfDocument*)document cachePages:(BOOL)cache;
 
 - (void)highlight:(NSUInteger)page;
 

@@ -2,7 +2,6 @@
 #import "DMPdfPageImageView.h"
 #import "DMPdfDocument.h"
 #import "DMPdfPage.h"
-#import "DMPdfView.h"
 
 #define DMPdfIndexPageMargin 15.0
 #define DMPdfIndexHighlightBoost 15.0
@@ -20,7 +19,7 @@
 @implementation DMPdfIndexView
 
 
-- (instancetype)initWithFrame:(CGRect)frame andDocument:(DMPdfDocument*)document {
+- (instancetype)initWithFrame:(CGRect)frame andDocument:(DMPdfDocument*)document cachePages:(BOOL)cache {
     if(self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor colorWithRed:.95 green:.95 blue:.95 alpha:.8];
         self.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin;
@@ -38,7 +37,7 @@
         for (DMPdfPage* page in document.pages) {
             CGFloat scale = (self.frame.size.width - DMPdfIndexPageMargin *2) / page.size.width;
             CGRect thumbFrame = CGRectMake(DMPdfIndexPageMargin, offset, page.size.width * scale, page.size.height * scale);
-            DMPdfPageImageView* pageView = [[DMPdfPageImageView alloc] initWithFrame:thumbFrame page:page renderQuality:DMPdfRenderQualityHigh];
+            DMPdfPageImageView* pageView = [[DMPdfPageImageView alloc] initWithFrame:thumbFrame page:page renderQuality:DMPdfRenderQualityHigh cache:cache];
             [pageView render];
             DMPdfIndexPageTap* recognizer = [[DMPdfIndexPageTap alloc] initWithTarget:self action:@selector(pageTapped:)];
             recognizer.page = page.number - 1;

@@ -5,7 +5,7 @@
 
 - (void)load {
     self.pdfView.renderQuality = DMPdfRenderQualityLow;
-    [self.pdfView load:[[NSBundle mainBundle] URLForResource:@"test" withExtension:@"pdf"]];
+    [self.pdfView load:[[NSBundle mainBundle] URLForResource:@"sample" withExtension:@"pdf"]];
     self.navigationItem.leftBarButtonItem.enabled = NO;
     self.navigationItem.rightBarButtonItem.enabled = YES;
 }

@@ -3,7 +3,7 @@
 
 @interface DMPdfDocument ()
 
-@property (nonatomic, copy) NSURL* url;
+@property (nonatomic, strong) NSURL* url;
 
 @property (nonatomic) NSUInteger numberOfPages;
 
@@ -30,6 +30,12 @@
 
 - (CGPDFDocumentRef)reference {
     return CGPDFDocumentCreateWithURL((__bridge CFURLRef) self.url);
+}
+
+- (void)dealloc {
+    for(DMPdfPage* page in self.pages) {
+        page.document = nil;
+    }
 }
 
 @end

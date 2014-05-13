@@ -5,16 +5,18 @@
 @interface DMPdfPageView ()
 @property (nonatomic, strong) DMPdfPage* page;
 @property (nonatomic) DMPdfRenderQuality renderQuality;
+@property (nonatomic) BOOL cache;
 - (void)doRender;
 - (void)doClear;
 @end
 
 @implementation DMPdfPageView
 
-- (instancetype)initWithFrame:(CGRect)frame page:(DMPdfPage*)page renderQuality:(DMPdfRenderQuality)quality {
+- (instancetype)initWithFrame:(CGRect)frame page:(DMPdfPage*)page renderQuality:(DMPdfRenderQuality)quality cache:(BOOL)cache {
     if(self = [super initWithFrame:frame]) {
         self.page = page;
         self.renderQuality = quality;
+        self.cache = cache;
         self.backgroundColor = UIColor.whiteColor;
     }
     return self;

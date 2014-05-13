@@ -3,14 +3,21 @@ PODS:
   - DMImage (0.0.1):
     - DMFoundation (~> 0.0.1)
     - DMRequest (~> 0.1.2)
+  - DMPdfView (0.1.0):
+    - DMImage (~> 0.0.1)
   - DMRequest (0.1.3)
 
 DEPENDENCIES:
-  - DMImage
+  - DMPdfView (from `..`)
+
+EXTERNAL SOURCES:
+  DMPdfView:
+    :path: ..
 
 SPEC CHECKSUMS:
   DMFoundation: 6138d7917bed3d4051904dd8dabf72dc759a9dc9
   DMImage: b62021c66d6966efaac928e822711904fd02c734
+  DMPdfView: 1fb4be1c176ea65dde330c7e6961e2d605bedb80
   DMRequest: adf099f3e37cbe1e49d7b05065e7b34e77613557
 
 COCOAPODS: 0.32.1

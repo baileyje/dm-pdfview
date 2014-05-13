@@ -10,8 +10,9 @@
 }
 
 @property (nonatomic, readonly) DMPdfPage* page;
+@property (nonatomic, readonly) BOOL cache;
 
-- (instancetype)initWithFrame:(CGRect)frame page:(DMPdfPage*)page renderQuality:(DMPdfRenderQuality)quality;
+- (instancetype)initWithFrame:(CGRect)frame page:(DMPdfPage*)page renderQuality:(DMPdfRenderQuality)quality cache:(BOOL)cache;
 
 - (void)render;
 
